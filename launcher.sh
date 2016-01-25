@@ -12,4 +12,4 @@
 #
 #
 
-sudo node /usr/local/src/node_modules/nodatron/test/test.js
+sudo /opt/node/bin/node /usr/local/src/node_modules/nodatron/test/test.js
