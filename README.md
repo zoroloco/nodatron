@@ -1,2 +1,4 @@
 # nodatron
-Swift -> Node JS -> Python -> Arduino robot
+
+Node JS -> Python -> Arduino robot
+
