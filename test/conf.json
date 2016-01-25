@@ -1,0 +1,13 @@
+{"log" : "true",
+ "logDir" : "/var/log/nodatron",
+ "services" : [ 
+    {"name"        : "robotSvc.js",
+	 "title"       : "robotSvc", 
+	 "log"         : true,
+     "logDir"      : "/var/log/nodatron/robotSvc",
+	 "keepAlive"   : true,
+	 "baud"        : 9600,
+	 "device"      : "/dev/ttyACM0",
+	 "disabled"    : false}
+	] 
+}
