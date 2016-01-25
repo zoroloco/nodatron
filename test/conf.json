@@ -1,9 +1,9 @@
-{"log" : "true",
+{"log" : "false",
  "logDir" : "/var/log/nodatron",
  "services" : [ 
-    {"name"        : "robotSvc.js",
+    {"filename"    : "robotSvc.js",
 	 "title"       : "robotSvc", 
-	 "log"         : true,
+	 "log"         : false,
      "logDir"      : "/var/log/nodatron/robotSvc",
 	 "keepAlive"   : true,
 	 "baud"        : 9600,
