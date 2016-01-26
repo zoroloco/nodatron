@@ -63,7 +63,7 @@ def sendData(arduino):
     while 1:
         try:
             cmd = stdin.readline()
-            sys.stdout.write("Just got from stdin - "+cmd)
+            #sys.stdout.write("Just got from stdin - "+cmd)
             arduino.write(cmd.encode('utf-8'))
         except serial.SerialException:
             sys.stderr.write("Serial exception while writing. Port probably closed.")
