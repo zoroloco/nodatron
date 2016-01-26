@@ -21,7 +21,9 @@ class serialIn (threading.Thread):
         if not self.arduino:
             return 1
 
-        receiveData(self.arduino)
+        if(receiveData(self.arduino)):
+		    return 1
+			
         arduino.close()
 
 #serialOut thread
@@ -35,7 +37,9 @@ class serialOut (threading.Thread):
         if not self.arduino:
             return 1
 
-        sendData(self.arduino)
+        if(sendData(self.arduino)):
+		    return 1
+			
         arduino.close()
 
 #Connect
@@ -43,6 +47,9 @@ def connect(threadName,device,baud):
     try:
         arduino = serial.Serial(device,baud,timeout=30)
         if arduino:
+		    flushInput()
+		    sys.stdout.write("CONNECTED - "+threadName)
+			sys.stdout.flush()
             return arduino
         else:
             sys.stderr.write(threadName+"Error with call to serial.Serial during connection.")
@@ -55,17 +62,29 @@ def connect(threadName,device,baud):
 #TX
 def sendData(arduino):
     while 1:
-        cmd = stdin.readline()
-        arduino.write(cmd)
+	    try:
+            cmd = stdin.readline()
+            arduino.write(cmd)
+		except serial.SerialException:
+		    sys.stderr.write("Serial exception while writing. Port probably closed.")			
+			return 1
+		except serial.SerialTimeoutException:
+		    sys.stderr.write("Serial timeout exception while writing.")
+			return 1
 
 #RX
 def receiveData(arduino):
-    lastInput = ''
     while 1:
-        input = arduino.readline()#read 1 byte at a time
-        if(lastInput != input):#only stdout data if new
-            sys.stdout.write(input)
-            lastInput = input
+	    try:
+		    bytesInBuffer = arduino.in_Waiting()
+			if(bytesInBuffer > 0):
+                input = arduino.read(bytesInBuffer)
+				if(input is not None):
+                    sys.stdout.write(input)
+                    sys.stdout.flush()
+		except serial.SerialException:
+		    sys.stderr.write("Serial exception while reading. Port probably closed.")
+			return 1
 
 #start
 try:
