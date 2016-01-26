@@ -63,7 +63,8 @@ def sendData(arduino):
     while 1:
         try:
             cmd = stdin.readline()
-            arduino.write(cmd)
+            sys.stdout.write("Just got from stdin - "+cmd)
+            arduino.write(cmd.encode('utf-8'))
         except serial.SerialException:
             sys.stderr.write("Serial exception while writing. Port probably closed.")
             return 1
@@ -74,13 +75,11 @@ def sendData(arduino):
 #RX
 def receiveData(arduino):
     while 1:
-        try:
-            bytesInBuffer = arduino.inWaiting()
-            if(bytesInBuffer > 0):
-                input = arduino.read(bytesInBuffer)
-                if(input is not None):
-                    sys.stdout.write(input)
-                    sys.stdout.flush()
+        try:                        
+            input = arduino.readline()
+            if(input is not None):
+                sys.stdout.write(input)
+                sys.stdout.flush()
         except serial.SerialException:
             sys.stderr.write("Serial exception while reading. Port probably closed.")
             return 1
