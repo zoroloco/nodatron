@@ -22,8 +22,8 @@ class serialIn (threading.Thread):
             return 1
 
         if(receiveData(self.arduino)):
-		    return 1
-			
+            return 1
+
         arduino.close()
 
 #serialOut thread
@@ -38,8 +38,8 @@ class serialOut (threading.Thread):
             return 1
 
         if(sendData(self.arduino)):
-		    return 1
-			
+            return 1
+
         arduino.close()
 
 #Connect
@@ -47,7 +47,7 @@ def connect(threadName,device,baud):
     try:
         arduino = serial.Serial(device,baud,timeout=30)
         if arduino:
-		    sys.stdout.write("CONNECTED - "+threadName)
+            sys.stdout.write("CONNECTED - "+threadName)
             sys.stdout.flush()
             return arduino
         else:
@@ -61,29 +61,29 @@ def connect(threadName,device,baud):
 #TX
 def sendData(arduino):
     while 1:
-	    try:
+        try:
             cmd = stdin.readline()
             arduino.write(cmd)
-		except serial.SerialException:
-		    sys.stderr.write("Serial exception while writing. Port probably closed.")			
-			return 1
-		except serial.SerialTimeoutException:
-		    sys.stderr.write("Serial timeout exception while writing.")
-			return 1
+        except serial.SerialException:
+            sys.stderr.write("Serial exception while writing. Port probably closed.")			
+            return 1
+        except serial.SerialTimeoutException:
+            sys.stderr.write("Serial timeout exception while writing.")
+            return 1
 
 #RX
 def receiveData(arduino):
     while 1:
-	    try:
-		    bytesInBuffer = arduino.in_Waiting()
-			if(bytesInBuffer > 0):
+        try:
+            bytesInBuffer = arduino.inWaiting()
+            if(bytesInBuffer > 0):
                 input = arduino.read(bytesInBuffer)
-				if(input is not None):
+                if(input is not None):
                     sys.stdout.write(input)
                     sys.stdout.flush()
-		except serial.SerialException:
-		    sys.stderr.write("Serial exception while reading. Port probably closed.")
-			return 1
+        except serial.SerialException:
+            sys.stderr.write("Serial exception while reading. Port probably closed.")
+            return 1
 
 #start
 try:
