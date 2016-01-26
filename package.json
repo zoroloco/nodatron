@@ -1,6 +1,6 @@
 {
   "name": "nodatron",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Node JS application that will run a robot on an Arduino.",
   "main": "node lib/nodatron.js",
   "scripts": {
