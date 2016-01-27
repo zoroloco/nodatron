@@ -15,7 +15,6 @@
      "title"     : "tcpSvc",
      "log"       : false,
      "keepAlive" : true,
-     "host"      : "99.155.61.20",
      "port"      : 8170
     }
 
