@@ -45,7 +45,7 @@ class serialOut (threading.Thread):
 #Connect
 def connect(threadName,device,baud):
     try:
-        arduino = serial.Serial(device,baud,timeout=30)
+        arduino = serial.Serial(device,baud,timeout=0)
         if arduino:
             sys.stdout.write("CONNECTED - "+threadName)
             sys.stdout.flush()
@@ -75,7 +75,7 @@ def sendData(arduino):
 #RX
 def receiveData(arduino):
     while 1:
-        try:                        
+        try:
             input = arduino.readline()
             if(input is not None):
                 sys.stdout.write(input)
@@ -113,4 +113,3 @@ if serialOutThread:
     serialOutThread.start()
 else:
     sys.stderr.write("Error starting thread serialOut\n")
-
