@@ -1,9 +1,9 @@
-{"log" : "false",
+{"log" : "true",
  "logDir" : "/var/log/nodatron",
  "services" : [
     {"filename"     : "robotSvc.js",
 	   "title"        : "robotSvc",
-	   "log"          : false,
+	   "log"          : true,
      "logDir"       : "/var/log/nodatron/robotSvc",
 	   "keepAlive"    : true,
 	   "baud"         : 9600,
@@ -13,7 +13,8 @@
 
     {"filename"  : "tcpSvc.js",
      "title"     : "tcpSvc",
-     "log"       : false,
+     "log"          : true,
+     "logDir"       : "/var/log/nodatron/tcpSvc",
      "keepAlive" : true,
      "port"      : 8170
     }
