@@ -38,7 +38,7 @@ do_start () {
 }
 do_stop () {
     log_daemon_msg "Stopping system $DAEMON_NAME daemon"
-    start-stop-daemon --stop --pidfile $PIDFILE --retry 10
+    start-stop-daemon --stop --signal TERM --pidfile $PIDFILE
     log_end_msg $?
 }
 
@@ -64,4 +64,3 @@ case "$1" in
 
 esac
 exit 0
-
