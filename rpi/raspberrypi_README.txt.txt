@@ -2,7 +2,8 @@ Installation instructions for Nodatron.
 
 apt-get update
 apt-get upgrade
-apt-get nodejs
+
+download latest node js soure and compile. (4.3+)
 
 
 install npm
