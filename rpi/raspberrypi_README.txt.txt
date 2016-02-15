@@ -33,5 +33,8 @@ sudo raspi-config
 5. Select city or region.
 6. Reboot your pi.
 
+install mjpg-streamer
+http://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi
+
 now run with:  /etc/init.d/nodatron.sh start
 stop    with:  /etc/init.d/nodatron.sh stop
