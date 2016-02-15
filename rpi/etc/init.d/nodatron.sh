@@ -15,7 +15,7 @@
 #
 
 # Change the next 3 lines to suit where you install your script and what you want to call it
-DIR=/usr/local/src/node_modules/nodatron
+DIR=/usr/local/src
 DAEMON=$DIR/nodatron.sh
 DAEMON_NAME=nodatron
 
@@ -40,6 +40,16 @@ do_stop () {
     log_daemon_msg "Stopping system $DAEMON_NAME daemon"
     start-stop-daemon --stop --signal TERM --pidfile $PIDFILE
     killall nodatron
+
+if pgrep mjpg_streamer
+then
+  kill $(pgrep mjpg_streamer) > /dev/null 2>&1
+  echo "mjpg_streamer stopped"
+else
+  echo "mjpg_streamer not running"
+fi
+
+
     log_end_msg $?
 }
 
@@ -61,7 +71,7 @@ case "$1" in
     *)
         echo "Usage: /etc/init.d/$DAEMON_NAME {start|stop|restart|status}"
         exit 1
-		  ;;
+                  ;;
 
 esac
 exit 0
