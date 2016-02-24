@@ -1,22 +1,33 @@
-{"log" : "true",
+{"log" : "false",
  "logDir" : "/var/log/nodatron",
  "services" : [
     {"filename"     : "robotSvc.js",
 	   "title"        : "robotSvc",
-	   "log"          : true,
+	   "log"          : false,
      "logDir"       : "/var/log/nodatron/robotSvc",
 	   "keepAlive"    : true,
 	   "baud"         : 9600,
 	   "device"       : "/dev/ttyACM0",
      "stdinEnabled" : true,
-	   "disabled"     : false},
+	   "disabled"     : false,
+     "components"   : [
+         {"name" : "baseServo"    , "type" : "servo", "pin" : 9},
+         {"name" : "camServo"     , "type" : "servo", "pin" : 10},
+         {"name" : "tcpLed"       , "type" : "led",   "pin" : 7},
+         {"name" : "motionLed"    , "type" : "led",   "pin" : "A2"},
+         {"name" : "pirSensor"    , "type" : "pir",   "pin" : 2},
+         {"name" : "streamButton" , "type" : "button","pin" : 4}
+     ]
+   },
 
     {"filename"  : "tcpSvc.js",
      "title"     : "tcpSvc",
-     "log"          : true,
+     "log"          : false,
      "logDir"       : "/var/log/nodatron/tcpSvc",
      "keepAlive" : true,
-     "port"      : 8170
+     "port"      : 8170,
+     "securityKey" : "nodey",
+     "disabled"  : true
     }
 
 	]
