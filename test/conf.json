@@ -27,7 +27,6 @@
      "keepAlive" : true,
      "port"      : 8170,
      "securityKey" : "nodey",
-     "disabled"  : true
     }
 
 	]
