@@ -15,7 +15,7 @@
          {"name" : "camServo"     , "type" : "servo", "pin" : 10},
          {"name" : "tcpLed"       , "type" : "led",   "pin" : 7},
          {"name" : "motionLed"    , "type" : "led",   "pin" : "A2"},
-         {"name" : "pirSensor"    , "type" : "pir",   "pin" : 2},
+         {"name" : "pirSensorFront" , "type" : "pir",   "pin" : 2},
          {"name" : "streamButton" , "type" : "button","pin" : 4}
      ]
    },
