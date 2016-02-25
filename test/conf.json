@@ -26,7 +26,7 @@
      "logDir"       : "/var/log/nodatron/tcpSvc",
      "keepAlive" : true,
      "port"      : 8170,
-     "securityKey" : "nodey",
+     "securityKey" : "nodey"
     }
 
 	]
