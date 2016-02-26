@@ -47,7 +47,7 @@ def connect(threadName,device,baud):
     try:
         arduino = serial.Serial(device,baud,timeout=0)
         if arduino:
-            #sys.stdout.write("CONNECTED - "+threadName)
+            sys.stdout.write("{CONNECTED - "+threadName+"}")
             sys.stdout.flush()
             return arduino
         else:
