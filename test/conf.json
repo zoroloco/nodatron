@@ -11,12 +11,14 @@
      "stdinEnabled" : true,
 	   "disabled"     : false,
      "components"   : [
-         {"name" : "baseServo"    , "type" : "servo", "pin" : 9},
-         {"name" : "camServo"     , "type" : "servo", "pin" : 10},
-         {"name" : "tcpLed"       , "type" : "led",   "pin" : 7},
-         {"name" : "motionLed"    , "type" : "led",   "pin" : "A2"},
-         {"name" : "pirSensorFront" , "type" : "pir",   "pin" : 2},
-         {"name" : "streamButton" , "type" : "button","pin" : 4}
+         {"name" : "baseServo"      , "type" : "servo", "pin" : 9},
+         {"name" : "camServo"       , "type" : "servo", "pin" : 10},
+         {"name" : "tcpLed"         , "type" : "led",   "pin" : 5},
+         {"name" : "motionLed"      , "type" : "led",   "pin" : 4},
+         {"name" : "activityLed"    , "type" : "led",   "pin" : 3},
+         {"name" : "powerLed"       , "type" : "led",   "pin" : 2},
+         {"name" : "pirSensorFront" , "type" : "pir",   "pin" : 7},
+         {"name" : "powerButton"    , "type" : "button","pin" : 6}
      ]
    },
 
