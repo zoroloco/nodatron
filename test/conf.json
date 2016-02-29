@@ -11,14 +11,16 @@
      "stdinEnabled" : true,
 	   "disabled"     : false,
      "components"   : [
+         {"name" : "powerLed"       , "type" : "led",   "pin" : 2},
+         {"name" : "activityLed"    , "type" : "led",   "pin" : 3},
+         {"name" : "motionLed"      , "type" : "led",   "pin" : 4},
+         {"name" : "tcpLed"         , "type" : "led",   "pin" : 5},
+         {"name" : "powerButton"    , "type" : "button","pin" : 6},
+         {"name" : "pirSensorFront" , "type" : "pir",   "pin" : 7},
+         {"name" : "pirSensorLeft" , "type" : "pir",   "pin" : 8},
          {"name" : "baseServo"      , "type" : "servo", "pin" : 9},
          {"name" : "camServo"       , "type" : "servo", "pin" : 10},
-         {"name" : "tcpLed"         , "type" : "led",   "pin" : 5},
-         {"name" : "motionLed"      , "type" : "led",   "pin" : 4},
-         {"name" : "activityLed"    , "type" : "led",   "pin" : 3},
-         {"name" : "powerLed"       , "type" : "led",   "pin" : 2},
-         {"name" : "pirSensorFront" , "type" : "pir",   "pin" : 7},
-         {"name" : "powerButton"    , "type" : "button","pin" : 6}
+         {"name" : "pirSensorRight" , "type" : "pir",   "pin" : 11}         
      ]
    },
 
