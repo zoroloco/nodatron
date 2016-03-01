@@ -40,6 +40,15 @@ do_stop () {
     log_daemon_msg "Stopping system $DAEMON_NAME daemon"
     start-stop-daemon --stop --signal TERM --pidfile $PIDFILE
     killall nodatron
+
+    if pgrep mjpg_streamer
+    then
+      kill $(pgrep mjpg_streamer) > /dev/null 2>&1
+      echo "mjpg_streamer stopped"
+    else
+      echo "mjpg_streamer not running"
+    fi
+
     log_end_msg $?
 }
 
