@@ -1,4 +1,4 @@
-{"log" : "false",
+{"log" : false,
  "logDir" : "/var/log/nodatron",
  "services" : [
     {"filename"     : "robotSvc.js",
