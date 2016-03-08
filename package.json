@@ -1,10 +1,10 @@
 {
   "name": "nodatron",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "description": "Node JS application that will run a robot on an Arduino. Uses python and nodejs",
   "main": "node lib/nodatron.js",
   "scripts": {
-    "test": "node test/test.js"
+    "test": "node test/test-dev.js"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,8 @@
   "homepage": "https://github.com/zoroloco/nodatron-js#readme",
   "dependencies": {
     "async": "^1.5.0",
-    "winston": "^2.1.1"
+    "winston": "^2.1.1",
+    "underscore": "^1.8.3"
   },
   "engines": {
     "node": "^4.3.0"
