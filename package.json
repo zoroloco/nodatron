@@ -1,6 +1,6 @@
 {
   "name": "nodatron",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "Node JS application that will run a robot on an Arduino. Uses python serial for 2 way communication to board.",
   "main": "node lib/nodatron.js",
   "scripts": {
