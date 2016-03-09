@@ -3,7 +3,7 @@ var nodatron = require('../lib/nodatron.js');
 var arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});
 
 arduino.on("connected", function(){
-  var powerLed          = arduino.creatLed(2);
+  var powerLed          = arduino.createLed(2);
   var activityLed       = arduino.createLed(3);
   var motionLed         = arduino.createLed(4);
   var connectivityLed   = arduino.createLed(5);
