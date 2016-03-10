@@ -91,7 +91,7 @@ arduino.on("connected", function(){
 
   function panCenter(){
     baseServo.move(110);
-    camServo.move(0);
+    camServo.move(85);
   }
 
   //move camera to a rest position.
