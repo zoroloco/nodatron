@@ -30,7 +30,7 @@ npm servo (will sweep a servo from 0-180 degrees.)
 
 
 #LED blink
-
+```javascript
 var nodatron = require('../../lib/nodatron.js');
 
 var arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});
@@ -40,9 +40,10 @@ arduino.on("connected", function(){
 
   led.startBlink();
 });
+```
 
 #Sensor
-
+```javascript
 var nodatron = require('../../lib/nodatron.js');
 
 var arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});
@@ -60,3 +61,4 @@ arduino.on("connected", function(){
   });
 
 });
+```
