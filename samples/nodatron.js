@@ -1,4 +1,4 @@
-var nodatron = require('nodatron'),
+var nodatron = require('../lib/nodatron'),
     cp       = require('child_process');
 
 var arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});
