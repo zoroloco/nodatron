@@ -63,6 +63,51 @@ arduino.on("connected", function(){
 });
 ```
 
+#Servo sweep
+```javascript
+var nodatron = require('../../lib/nodatron.js');
+
+var arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});
+
+arduino.on("connected", function(){
+  var servo         = arduino.createServo(9);
+
+  var resetFlag = false;
+
+  setInterval(function(){
+    if(!resetFlag){
+      servo.move(180);
+      resetFlag = true;
+    }
+    else{
+      servo.move(0);
+    }
+  },10000);
+
+});
+```
+
+#Button
+```javascript
+var nodatron = require('../../lib/nodatron.js');
+
+var arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});
+
+arduino.on("connected", function(){
+
+  var button = arduino.createButton(6);
+
+  button.on('on',function(){
+    console.log("button toggled to on.");
+  });
+
+  button.on('off',function(){
+    console.log("button toggled to off.");
+  });
+
+});
+```
+
 #Gracefully shutting down
 ```javascript
 process.on('SIGTERM', function() {//called from /etc/init.d/nodatron.sh from kill pid
