@@ -62,3 +62,28 @@ arduino.on("connected", function(){
 
 });
 ```
+
+#Gracefully shutting down
+```javascript
+process.on('SIGTERM', function() {//called from /etc/init.d/nodatron.sh from kill pid
+  log.info("Got kill signal. Exiting.");
+  arduino.shutdown();
+});
+
+process.on('SIGINT', function() {
+  log.warn("Caught interrupt signal(Ctrl-C)");
+  arduino.shutdown();
+});
+```
+
+#enable raw input from commandline (good for debugging)
+```javascript
+
+arduino.enableConsole();
+
+```
+
+#enable file logging
+```javascript
+arduino.enableFileLogging('/var/log/mylogs');
+```
