@@ -1,5 +1,14 @@
-var nodatron = require('../lib/nodatron.js'),
-    cp       = require('child_process');
+/**
+ * This is a sample use of the Nodatron module.  It will create a connection
+ * to the Arduino and then define some LEDs , a button , 3 sensors and 2 servos.
+ * If the button is turned on, then sensors will be turned on along the activity led.
+ * If a sensor goes off, then the motion LED blinks until the sensor indicates motion stopped.
+ * Servos are moved to face the correct sensor that was triggered.
+ * If button turned off, then sensors disabled and LEDs turned off and servos go to a rest
+ * position.
+*/
+
+var nodatron = require('../../lib/nodatron.js');
 
 var arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});
 
@@ -18,15 +27,6 @@ arduino.on("connected", function(){
   powerButton.on('on',function(){
     powerLed.turnOn();
     panCenter();
-
-    executeCommand("/usr/local/src/startStream.sh",function(result,msg){
-      if(result){
-        console.info(msg);
-      }
-      else{
-        console.error(msg);
-      }
-    });
   });
 
   powerButton.on('off',function(){
@@ -35,15 +35,6 @@ arduino.on("connected", function(){
     connectivityLed.turnOff();
     activityLed.turnOff();
     sleepCam();
-
-    executeCommand("/usr/local/src/stopStream.sh",function(result,msg){
-      if(result){
-        console.info(msg);
-      }
-      else{
-        console.error(msg);
-      }
-    });
   });
 
   motionSensorFront.on('start',function(){
@@ -99,19 +90,4 @@ arduino.on("connected", function(){
     baseServo.move(110);
     camServo.move(0);
   }
-
-  function executeCommand(cmd,cb){
-  	var child = cp.exec(cmd ,function(error,stdout,stderr){
-  		if (stderr){
-  			cb(false,"Error executing command "+cmd+" with stderr:"+stderr);
-  		}
-  		if (error) {
-  			cb(false,"Error executing command "+cmd+" with error:"+error);
-  		}
-  		if(stdout){
-  			cb(true,cmd+" successfully executed with no errors.",stdout);
-  		}
-  	});
-  }
-
 });

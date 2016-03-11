@@ -1,12 +1,16 @@
 {
   "name": "nodatron",
   "version": "0.7.10",
-  "description": "Node JS application that will run a robot on an Arduino. Uses python serial for 2 way communication to board.",
+  "description": "Uses python serial for 2 way communication to board.",
   "main": "node lib/nodatron.js",
   "scripts": {
-    "start": "node samples/nodatron.js",
-    "stop": "killall -SIGINT node",
-    "test": "node test/test.js"
+    "button" : "node samples/button/button.js",
+    "sensor" : "node samples/hcsr501/sensor.js",
+    "led"    : "node samples/led/led.js",
+    "servo"  : "node samples/servo/servo.js",
+    "robot"  : "node samples/robot/robot.js",
+    "stop"   : "killall -SIGINT node",
+    "test"   : "node test/test/test.js"
   },
   "repository": {
     "type": "git",
@@ -31,7 +35,6 @@
   },
   "homepage": "https://github.com/zoroloco/nodatron-js#readme",
   "dependencies": {
-    "async": "^1.5.0",
     "winston": "^2.1.1",
     "underscore": "^1.8.3"
   },
