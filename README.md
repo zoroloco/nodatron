@@ -108,6 +108,19 @@ arduino.on("connected", function(){
 });
 ```
 
+#Emic to speech module
+```javascript
+var nodatron = require('../../lib/nodatron.js');
+
+var arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});
+
+arduino.on("connected", function(){
+  var emic          = arduino.createEmicToSpeech(12);
+
+  emic.speak("Hello. Do you want to play a game?");//this will be spoken.
+});
+```
+
 #Gracefully shutting down
 ```javascript
 process.on('SIGTERM', function() {//called from /etc/init.d/nodatron.sh from kill pid

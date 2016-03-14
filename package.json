@@ -9,6 +9,7 @@
     "led": "node samples/led/led.js",
     "servo": "node samples/servo/servo.js",
     "robot": "node samples/robot/robot.js",
+    "emic" : "node samples/emicToSpeech/emicToSpeech.js",
     "stop": "killall -SIGINT node",
     "test": "node test/test/test.js"
   },
