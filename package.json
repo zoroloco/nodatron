@@ -1,32 +1,33 @@
 {
   "name": "nodatron",
-  "version": "1.0.4",
-  "description": "Uses python serial for 2 way communication to board.",
+  "version": "2.0.0",
+  "description": "Uses python serial for 2 way communication to an arduino board
+    or raspberry pi.",
   "main": "node lib/nodatron.js",
   "scripts": {
     "button": "node samples/button/button.js",
     "sensor": "node samples/hcsr501/sensor.js",
-    "led": "node samples/led/led.js",
-    "servo": "node samples/servo/servo.js",
-    "robot": "node samples/robot/robot.js",
-    "emic": "node samples/emicToSpeech/emicToSpeech.js",
-    "stop": "killall -SIGINT node",
-    "test": "node test/test/test.js"
+    "led"   : "node samples/led/led.js",
+    "servo" : "node samples/servo/servo.js",
+    "robot" : "node samples/robot/robot.js",
+    "emic"  : "node samples/emicToSpeech/emicToSpeech.js",
+    "stop"  : "killall -SIGINT node",
+    "test"  : "node test/test/test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zoroloco/nodatron-js.git"
+    "url" : "git+https://github.com/zoroloco/nodatron-js.git"
   },
   "keywords": [
     "arduino",
     "robotics",
-    "python serial"
+    "pyserial"
   ],
   "author": {
     "name": "Kenneth Centurion"
   },
   "contributors": {
-    "name": "Kenneth Centurion",
+    "name" : "Kenneth Centurion",
     "email": "kcenturion@yahoo.com"
   },
   "license": "MIT",

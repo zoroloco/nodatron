@@ -9,5 +9,5 @@ var nodatron = require('../../lib/nodatron.js');
 var arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});
 
 arduino.on("connected", function(){
-  console.log("Successfully connected to Arduino UNO device.");
+  console.log("Successfully connected to device.");
 });

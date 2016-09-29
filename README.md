@@ -1,13 +1,12 @@
-# nodatron
+# Nodatron
 
 This module will allow you to easily create objects for your
 Arduino components, such as LEDs, sensors, buttons and servos.  You can send commands
 by easily calling methods on these objects.  These objects will also emit events when
 something happens, such as a button being pressed.  
+This module will also allow you to control supported GPIO components on your raspberry pi.
 
-There are many samples.  
-
-Note:  
+# Note
 
 This module is NOT Johnny-five.  Use Johnny-five for a completely tested framework that supports
 many different boards and a lot more components. Each sample here comes with its corresponding sketch.
