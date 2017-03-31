@@ -12,6 +12,9 @@ This module is NOT Johnny-five.  Use Johnny-five for a completely tested framewo
 many different boards and a lot more components. Each sample here comes with its corresponding sketch.
 You will still need to upload a sketch to your Arduino.
 
+Image of Nodatron!
+https://drive.google.com/file/d/0B7EyXq1CH6WfM2xfaVYxTVBzR28/view?usp=sharing
+
 This framework has only been tested on an Arduino Uno R3 board.
 
 #INSTALL
