@@ -30,7 +30,7 @@ function nodatron(properties){
   this._serialConnection = null;
   this._components       = new Array();
 
-	if(this instanceof Nodatron === false){
+	if(this instanceof nodatron === false){
 		throw new TypeError("Classes can't be function-called.");
 	}
 
@@ -90,7 +90,7 @@ function nodatron(properties){
     process.exit(1);
   });
 
-  Nodatron.prototype.enableConsole = function(){
+  nodatron.prototype.enableConsole = function(){
     var self = this;
 
     const rl = readline.createInterface({
@@ -104,32 +104,32 @@ function nodatron(properties){
 		});
   }
 
-  Nodatron.prototype.createLed = function(pin){
+  nodatron.prototype.createLed = function(pin){
     this._components[pin] = new led(pin,this._serialConnection);
     return this._components[pin];
   }
 
-  Nodatron.prototype.createButton = function(pin){
+  nodatron.prototype.createButton = function(pin){
     this._components[pin] = new button(pin,this._serialConnection);
     return this._components[pin];
   }
 
-  Nodatron.prototype.createPir = function(pin){
+  nodatron.prototype.createPir = function(pin){
     this._components[pin] = new pir(pin,this._serialConnection);
     return this._components[pin];
   }
 
-  Nodatron.prototype.createServo = function(pin){
+  nodatron.prototype.createServo = function(pin){
     this._components[pin] = new servo(pin,this._serialConnection);
     return this._components[pin];
   }
 
-  Nodatron.prototype.createEmicToSpeech = function(pin){
+  nodatron.prototype.createEmicToSpeech = function(pin){
     this._components[pin] = new emic(pin,this._serialConnection);
     return this._components[pin];
   }
 
-  Nodatron.prototype.shutdown = function(){
+  nodatron.prototype.shutdown = function(){
     console.info("Starting clean shutdown of Nodatron.");
     if(!_.isEmpty(this._serialConnection)){
       this._serialConnection.shutdown();
