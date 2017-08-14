@@ -144,3 +144,11 @@ process.on('SIGINT', function() {
 arduino.enableConsole();
 
 ```
+
+#catch a serial connection error
+```javascript
+
+arduino.on("serialLostConnection", function(msg){
+  console.error(msg);
+});
+```
