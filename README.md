@@ -4,22 +4,24 @@ This module will allow you to easily create objects for your
 Arduino components, such as LEDs, sensors, buttons and servos.  You can send commands
 by easily calling methods on these objects.  These objects will also emit events when
 something happens, such as a button being pressed.  
-This module will also allow you to control supported GPIO components on your raspberry pi.
 
 # Note
 
 This module is NOT Johnny-five.  Use Johnny-five for a completely tested framework that supports
 many different boards and a lot more components. Each sample here comes with its corresponding sketch.
-You will still need to upload a sketch to your Arduino.
+You will still need to upload that sketch to your Arduino for any of this to work. I created Nodatron
+because I was having too many issues getting the serialport package to work on a Raspberry Pi.
 
-Image of Nodatron!
-https://drive.google.com/file/d/0B7EyXq1CH6WfM2xfaVYxTVBzR28/view?usp=sharing
 
-This framework has only been tested on an Arduino Uno R3 board.
+This framework has only been tested on the following:
+- Arduino Uno R3 board connected to a Raspberry Pi 2/3.
+- Arduino Uno R3 board connected to a Raspberry Pi Zero.
 
 #INSTALL
 
 npm install nodatron
+
+pip install pyserial
 
 #RUN
 
@@ -33,7 +35,7 @@ npm servo (will sweep a servo from 0-180 degrees.)
 
 #LED blink
 ```javascript
-var nodatron = require('../../lib/nodatron.js');
+var nodatron = require('nodatron');
 
 var arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});
 
@@ -46,7 +48,7 @@ arduino.on("connected", function(){
 
 #Sensor
 ```javascript
-var nodatron = require('../../lib/nodatron.js');
+var nodatron = require('nodatron');
 
 var arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});
 
@@ -67,7 +69,7 @@ arduino.on("connected", function(){
 
 #Servo sweep
 ```javascript
-var nodatron = require('../../lib/nodatron.js');
+var nodatron = require('nodatron');
 
 var arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});
 
@@ -91,7 +93,7 @@ arduino.on("connected", function(){
 
 #Button
 ```javascript
-var nodatron = require('../../lib/nodatron.js');
+var nodatron = require('nodatron');
 
 var arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});
 
@@ -112,7 +114,7 @@ arduino.on("connected", function(){
 
 #Emic to speech module
 ```javascript
-var nodatron = require('../../lib/nodatron.js');
+var nodatron = require('nodatron');
 
 var arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});
 
@@ -141,9 +143,4 @@ process.on('SIGINT', function() {
 
 arduino.enableConsole();
 
-```
-
-#enable file logging
-```javascript
-arduino.enableFileLogging('/var/log/mylogs');
 ```

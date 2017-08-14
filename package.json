@@ -1,19 +1,7 @@
 {
   "name": "nodatron",
-  "version": "2.0.0",
-  "description": "Uses python serial for 2 way communication to an arduino board
-    or raspberry pi.",
-  "main": "node lib/nodatron.js",
-  "scripts": {
-    "button": "node samples/button/button.js",
-    "sensor": "node samples/hcsr501/sensor.js",
-    "led"   : "node samples/led/led.js",
-    "servo" : "node samples/servo/servo.js",
-    "robot" : "node samples/robot/robot.js",
-    "emic"  : "node samples/emicToSpeech/emicToSpeech.js",
-    "stop"  : "killall -SIGINT node",
-    "test"  : "node test/test/test.js"
-  },
+  "version": "3.0.0",
+  "description": "Uses python serial for 2 way communication to Arduino Uno.",
   "repository": {
     "type": "git",
     "url" : "git+https://github.com/zoroloco/nodatron-js.git"
@@ -37,10 +25,9 @@
   },
   "homepage": "https://github.com/zoroloco/nodatron-js#readme",
   "dependencies": {
-    "winston": "^2.1.1",
-    "underscore": "^1.8.3"
+    "underscore": "latest"
   },
   "engines": {
-    "node": "^4.3.0"
+    "node": "latest"
   }
 }
