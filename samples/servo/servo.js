@@ -5,7 +5,7 @@
  * Note: The call to servo.move() is non-blocking.
 */
 
-var nodatron = require('../../lib/nodatron.js');
+var nodatron = require('nodatron');
 
 var arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});
 

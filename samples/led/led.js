@@ -3,7 +3,7 @@
  * to the Arduino and then blink an LED on pin 2.
 */
 
-var nodatron = require('../../lib/nodatron.js');
+var nodatron = require('nodatron');
 
 var arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});
 

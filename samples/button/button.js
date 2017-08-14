@@ -3,7 +3,7 @@
  * to the Arduino and then read the state of a button on pin 6.
 */
 
-var nodatron = require('../../lib/nodatron.js');
+var nodatron = require('nodatron');
 
 var arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});
 

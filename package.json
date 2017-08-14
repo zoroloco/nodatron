@@ -1,6 +1,6 @@
 {
   "name": "nodatron",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Uses python serial for 2 way communication to Arduino Uno.",
   "repository": {
     "type": "git",

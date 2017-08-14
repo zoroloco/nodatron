@@ -3,7 +3,7 @@
  * to the Arduino and then send some text for the emic2speech module.
 */
 
-var nodatron = require('../../lib/nodatron.js');
+var nodatron = require('nodatron');
 
 var arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});
 
