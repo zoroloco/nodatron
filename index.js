@@ -34,8 +34,11 @@ function nodatron(properties){
 		throw new TypeError("Classes can't be function-called.");
 	}
 
-  if(properties.device == 'arduino'){
-      this._serialConnection = new arduino(properties.devPath,properties.baud);
+  if(!_.isEmpty(properties)){//optional args
+    this._serialConnection = new arduino(properties.devPath,properties.baud);
+  }
+  else{
+    this._serialConnection = new arduino({"device" : "/dev/ttyACM0","baud" : 9600});
   }
 
   this._serialConnection.connect(
