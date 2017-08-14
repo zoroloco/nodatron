@@ -91,3 +91,7 @@ arduino.on("connected", function(){
     camServo.move(0);
   }
 });
+
+arduino.on("serialLostConnection", function(msg){
+  console.error(msg);
+});

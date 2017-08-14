@@ -12,3 +12,7 @@ arduino.on("connected", function(){
 
   emic.speak("Hello. Do you want to play a game?");
 });
+
+arduino.on("serialLostConnection", function(msg){
+  console.error(msg);
+});

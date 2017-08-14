@@ -25,3 +25,7 @@ arduino.on("connected", function(){
   },10000);
 
 });
+
+arduino.on("serialLostConnection", function(msg){
+  console.error(msg);
+});

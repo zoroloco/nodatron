@@ -12,3 +12,7 @@ arduino.on("connected", function(){
 
   led.startBlink();
 });
+
+arduino.on("serialLostConnection", function(msg){
+  console.error(msg);
+});
