@@ -1,0 +1,113 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\node\\node.exe',
+1 verbose cli   'C:\\node\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish' ]
+2 info using npm@3.10.10
+3 info using node@v6.10.3
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: 'C:\\Users\\kcenturion\\Documents\\dev\\nodatron',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory C:\Users\kcenturion\AppData\Roaming\npm-cache\nodatron\3.0.0\package.tgz not in flight; packing
+9 verbose correctMkdir C:\Users\kcenturion\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+10 info lifecycle nodatron@3.0.0~prepublish: nodatron@3.0.0
+11 silly lifecycle nodatron@3.0.0~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ 'C:\\Users\\kcenturion\\AppData\\Roaming\\npm-cache\\nodatron\\3.0.0\\package.tgz',
+12 verbose tar pack   'C:\\Users\\kcenturion\\Documents\\dev\\nodatron' ]
+13 verbose tarball C:\Users\kcenturion\AppData\Roaming\npm-cache\nodatron\3.0.0\package.tgz
+14 verbose folder C:\Users\kcenturion\Documents\dev\nodatron
+15 verbose addLocalTarball adding from inside cache C:\Users\kcenturion\AppData\Roaming\npm-cache\nodatron\3.0.0\package.tgz
+16 verbose correctMkdir C:\Users\kcenturion\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+17 silly cache afterAdd nodatron@3.0.0
+18 verbose afterAdd C:\Users\kcenturion\AppData\Roaming\npm-cache\nodatron\3.0.0\package\package.json not in flight; writing
+19 verbose correctMkdir C:\Users\kcenturion\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+20 verbose afterAdd C:\Users\kcenturion\AppData\Roaming\npm-cache\nodatron\3.0.0\package\package.json written
+21 silly publish { name: 'nodatron',
+21 silly publish   version: '3.0.0',
+21 silly publish   description: 'Uses python serial for 2 way communication to Arduino Uno.',
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/zoroloco/nodatron-js.git' },
+21 silly publish   keywords: [ 'arduino', 'robotics', 'pyserial' ],
+21 silly publish   author: { name: 'Kenneth Centurion' },
+21 silly publish   contributors: { name: 'Kenneth Centurion', email: 'kcenturion@yahoo.com' },
+21 silly publish   license: 'MIT',
+21 silly publish   bugs:
+21 silly publish    { url: 'https://github.com/zoroloco/nodatron-js/issues',
+21 silly publish      email: 'kcenturion@yahoo.com' },
+21 silly publish   homepage: 'https://github.com/zoroloco/nodatron-js#readme',
+21 silly publish   dependencies: { underscore: 'latest' },
+21 silly publish   engines: { node: 'latest' },
+21 silly publish   readme: '# Nodatron\r\n\r\nThis module will allow you to easily create objects for your\r\nArduino components, such as LEDs, sensors, buttons and servos.  You can send commands\r\nby easily calling methods on these objects.  These objects will also emit events when\r\nsomething happens, such as a button being pressed.  \r\n\r\n# Note\r\n\r\nThis module is NOT Johnny-five.  Use Johnny-five for a completely tested framework that supports\r\nmany different boards and a lot more components. Each sample here comes with its corresponding sketch.\r\nYou will still need to upload that sketch to your Arduino for any of this to work. I created Nodatron\r\nbecause I was having too many issues getting the serialport package to work on a Raspberry Pi.\r\n\r\n\r\nThis framework has only been tested on the following:\r\n- Arduino Uno R3 board connected to a Raspberry Pi 2/3.\r\n- Arduino Uno R3 board connected to a Raspberry Pi Zero.\r\n\r\n#INSTALL\r\n\r\nnpm install nodatron\r\n\r\npip install pyserial\r\n\r\n#RUN\r\n\r\nnpm test (will test a connection.)\r\n\r\nnpm button (will print out to the console whenever a button is toggled.)\r\nnpm led (will blink an led.)\r\nnpm sensor (will print out to the console when a sensor is triggered.)\r\nnpm servo (will sweep a servo from 0-180 degrees.)\r\n\r\n\r\n#LED blink\r\n```javascript\r\nvar nodatron = require(\'nodatron\');\r\n\r\nvar arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});\r\n\r\narduino.on("connected", function(){\r\n  var led          = arduino.createLed(2);\r\n\r\n  led.startBlink();\r\n});\r\n```\r\n\r\n#Sensor\r\n```javascript\r\nvar nodatron = require(\'nodatron\');\r\n\r\nvar arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});\r\n\r\narduino.on("connected", function(){\r\n\r\n  var motionSensor = arduino.createPir(7);\r\n\r\n  motionSensor.on(\'start\',function(){\r\n    console.log("sensor detected some movement! Intruder alert!");\r\n  });\r\n\r\n  motionSensor.on(\'stop\',function(){\r\n    console.log("movement has stopped.");\r\n  });\r\n\r\n});\r\n```\r\n\r\n#Servo sweep\r\n```javascript\r\nvar nodatron = require(\'nodatron\');\r\n\r\nvar arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});\r\n\r\narduino.on("connected", function(){\r\n  var servo         = arduino.createServo(9);\r\n\r\n  var resetFlag = false;\r\n\r\n  setInterval(function(){\r\n    if(!resetFlag){\r\n      servo.move(180);\r\n      resetFlag = true;\r\n    }\r\n    else{\r\n      servo.move(0);\r\n    }\r\n  },10000);\r\n\r\n});\r\n```\r\n\r\n#Button\r\n```javascript\r\nvar nodatron = require(\'nodatron\');\r\n\r\nvar arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});\r\n\r\narduino.on("connected", function(){\r\n\r\n  var button = arduino.createButton(6);\r\n\r\n  button.on(\'on\',function(){\r\n    console.log("button toggled to on.");\r\n  });\r\n\r\n  button.on(\'off\',function(){\r\n    console.log("button toggled to off.");\r\n  });\r\n\r\n});\r\n```\r\n\r\n#Emic to speech module\r\n```javascript\r\nvar nodatron = require(\'nodatron\');\r\n\r\nvar arduino = new nodatron({"device" : "/dev/ttyACM0","baud" : 9600});\r\n\r\narduino.on("connected", function(){\r\n  var emic          = arduino.createEmicToSpeech(12);\r\n\r\n  emic.speak("Hello. Do you want to play a game?");//this will be spoken.\r\n});\r\n```\r\n\r\n#Gracefully shutting down\r\n```javascript\r\nprocess.on(\'SIGTERM\', function() {//called from /etc/init.d/nodatron.sh from kill pid\r\n  log.info("Got kill signal. Exiting.");\r\n  arduino.shutdown();\r\n});\r\n\r\nprocess.on(\'SIGINT\', function() {\r\n  log.warn("Caught interrupt signal(Ctrl-C)");\r\n  arduino.shutdown();\r\n});\r\n```\r\n\r\n#enable raw input from commandline (good for debugging)\r\n```javascript\r\n\r\narduino.enableConsole();\r\n\r\n```\r\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '5b4aebdc665c7c42833022385692099c83ec3a39',
+21 silly publish   _id: 'nodatron@3.0.0',
+21 silly publish   scripts: {},
+21 silly publish   _shasum: 'f1728ffa350964d4cd9728e3bd908192d66a775d',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name nodatron
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'nodatron',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'nodatron',
+26 silly mapToRegistry   name: 'nodatron',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/nodatron
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading C:\Users\kcenturion\AppData\Roaming\npm-cache\nodatron\3.0.0\package.tgz
+30 verbose request uri https://registry.npmjs.org/nodatron
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 2:13:06 PM
+33 verbose request using bearer token for auth
+34 verbose request id 3bc5763a71e717ee
+35 http request PUT https://registry.npmjs.org/nodatron
+36 http 403 https://registry.npmjs.org/nodatron
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '95',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Mon, 14 Aug 2017 19:13:07 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-iah17220-IAH',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1502737987.986595,VS0,VE897',
+37 verbose headers   vary: 'Accept-Encoding, Accept' }
+38 verbose request invalidating C:\Users\kcenturion\AppData\Roaming\npm-cache\registry.npmjs.org\nodatron on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 3.0.0." : nodatron
+40 verbose stack     at makeError (C:\node\node_modules\npm\node_modules\npm-registry-client\lib\request.js:302:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (C:\node\node_modules\npm\node_modules\npm-registry-client\lib\request.js:290:14)
+40 verbose stack     at Request._callback (C:\node\node_modules\npm\node_modules\npm-registry-client\lib\request.js:210:14)
+40 verbose stack     at Request.self.callback (C:\node\node_modules\npm\node_modules\request\request.js:187:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (C:\node\node_modules\npm\node_modules\request\request.js:1048:10)
+40 verbose stack     at emitOne (events.js:96:13)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (C:\node\node_modules\npm\node_modules\request\request.js:969:12)
+41 verbose statusCode 403
+42 verbose pkgid nodatron
+43 verbose cwd C:\Users\kcenturion\Documents\dev\nodatron
+44 error Windows_NT 6.1.7601
+45 error argv "C:\\node\\node.exe" "C:\\node\\node_modules\\npm\\bin\\npm-cli.js" "publish"
+46 error node v6.10.3
+47 error npm  v3.10.10
+48 error code E403
+49 error "You cannot publish over the previously published version 3.0.0." : nodatron
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]
